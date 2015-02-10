@@ -144,6 +144,8 @@ class _Channel(EasyDecorator):
                     return
             elif dec.args and msg.channel not in dec.args:
                 return
+            elif not dec.kwargs.get('private'):
+                return
             return dec.call(irc_c, msg, *args)
 watches.channel = _Channel
 
